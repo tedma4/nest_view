@@ -1,9 +1,20 @@
+<%= link_to "logout", "/logout/#{current_user.id}", method: :delete %>
+<br>
 
-
-<% @users.inspect %>
+<div style="display:inline-block;">
+	<div>Id</div>
+	<div>Name</div>
+	<div>Away</div>
+	<div>Structure Id</div>
+	<div>RHR Enrollment</div>
+	<div>ETA begin</div>
+	<div>Wheres</div>
+</div>
 
 <% user = @users.first %>
+<p><%= link_to "to user",user_path(user["user_id"]) %></p>
 <% mystery_key = user["structures"].keys %>
-<% next_one = user["structures"][mystery_key.first] %>
+<% user["structures"][mystery_key.first].map do |nest, value| %>
+	<p><%=  value  %><p>
+<% end  %>
 
-<%= next_one.keys %>

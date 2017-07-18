@@ -23,6 +23,8 @@ class User
       "Authorization": "Bearer #{self.oauth_token}"
     }
     res = HTTParty.get(url, :headers => headers, follow_redirects: true)
-    JSON.parse res.body 
+    nest_user = JSON.parse res.body 
+    nest_user["user_id"] = self.id.to_s
+    nest_user
   end
 end

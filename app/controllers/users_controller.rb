@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		user = User.find(param[:id])
+		user = User.find(params[:id])
 		@user = user.nest_data
 	end
 
@@ -19,5 +19,4 @@ class UsersController < ApplicationController
 				redirect_to root_path
 			end
 		end
-
 end

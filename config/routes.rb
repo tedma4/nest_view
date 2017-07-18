@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#auth'
   get 'auth/failure', to: redirect('/')
   get 'login', to: "sessions#new"
-  resources :sessions, only: [:create, :destroy, :new]
+  delete 'logout/:id', to: "sessions#delete"
+  resources :sessions, only: [:create, :delete, :new]
   resources :admin, only: [:create, :destroy]
   resources :users, only: [:create, :destroy, :index, :show]
 end

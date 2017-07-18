@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :ensure_params_exist, only: [:create]
+  before_action :ensure_params_exist, only: [:create], except: :destroy
 
   def new
   end
@@ -18,8 +18,9 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  def destroy
+  def delete
     session[:admin_id] = nil
+    redirect_to root_path
   end
 
   private
