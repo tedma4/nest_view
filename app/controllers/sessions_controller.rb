@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   before_action :ensure_params_exist, only: [:create]
 
   def new
-    @session = 
   end
 
   def create
@@ -10,7 +9,7 @@ class SessionsController < ApplicationController
     return invalid_login_attempt unless @admin
     return invalid_login_attempt unless @admin.authenticate(admin_params[:password])
     session[:admin_id] = @admin.id.to_s
-    redirect_to root_path
+    redirect_to "/users"
   end
 
   def auth

@@ -16,24 +16,13 @@ class User
     end
   end
 
-  def nest
-    url = URI.parse('https://developer-api.nest.com/')
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-    req = Net::HTTP::Get.new(url.to_s)
-    req["Content-Type"] = "application/json"
-    req["Authorization"] = "Bearer c.k4FCsfOcNz0DX1qssKhZ6GSCrKWECyrasXLDC0oPMEzfJY0LRFshWLdHEnjYkTS2qmLu0yzfmCVamMrfHVOQw98K7oa7dzb9WVU0oheS7Ab54r9htHstbhF9MkGgyovRtFFvVhZaQcUIOKSv"
-    res = http.request(req)
-    res
-  end
-
-  def nest2
+  def nest_data
     url = "https://developer-api.nest.com/"
     headers = {
       "Content-Type":  "application/json",
-      "Authorization": "Bearer c.k4FCsfOcNz0DX1qssKhZ6GSCrKWECyrasXLDC0oPMEzfJY0LRFshWLdHEnjYkTS2qmLu0yzfmCVamMrfHVOQw98K7oa7dzb9WVU0oheS7Ab54r9htHstbhF9MkGgyovRtFFvVhZaQcUIOKSv"
+      "Authorization": "Bearer #{self.oauth_token}"
     }
     res = HTTParty.get(url, :headers => headers, follow_redirects: true)
-    res 
+    JSON.parse res.body 
   end
 end

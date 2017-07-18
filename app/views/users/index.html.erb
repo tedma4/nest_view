@@ -1,0 +1,9 @@
+
+
+<% @users.inspect %>
+
+<% user = @users.first %>
+<% mystery_key = user["structures"].keys %>
+<% next_one = user["structures"][mystery_key.first] %>
+
+<%= next_one.keys %>

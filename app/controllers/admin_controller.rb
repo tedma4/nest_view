@@ -23,7 +23,7 @@ class AdminController < ApplicationController
   end
 
   def set_admin
-    @admin = @current_user
+    @admin = current_user
   end
 end
 
