@@ -6,4 +6,3 @@ class WelcomeController < ApplicationController
 			render 'welcome.html.erb'
 		end
 	end
-end

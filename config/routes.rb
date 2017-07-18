@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "welcome#index"
   get 'auth/:provider/callback', to: 'sessions#auth'
   get 'auth/failure', to: redirect('/')
-  resources :sessions, only: [:create, :destroy]
+  resources :sessions, only: [:create, :destroy, :new]
   resources :admin, only: [:create, :destroy]
   resources :users, only: [:create, :destroy]
 end

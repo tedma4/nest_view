@@ -33,6 +33,7 @@ gem 'mongoid', git: 'https://github.com/mongodb/mongoid.git'
 gem 'faker'
 gem 'omniauth-nest'
 gem 'figaro'
+gem 'httparty'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

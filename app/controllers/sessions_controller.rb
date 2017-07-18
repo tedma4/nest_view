@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
   before_action :ensure_params_exist, only: [:create]
 
+  def new
+    @session = 
+  end
+
   def create
     @admin = Admin.where(email: admin_params[:email]).first
     return invalid_login_attempt unless @admin
@@ -10,8 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def auth
-    binding.pry
-    user = User.from_omniauth(ENV["omniauth.auth"])
+    user = User.from_omniauth(request.env["omniauth.auth"])
     session[:user_id] = user.id
     redirect_to root_path
   end
