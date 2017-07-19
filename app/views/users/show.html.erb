@@ -2,20 +2,13 @@
 
 
 <p><%= link_to "to user",user_path(@user["user_id"]) %></p>
-<% mystery_key = @user["structures"].keys %>
-<% @user["structures"][mystery_key.first].map do |nest, value| %>
+<% structure_key = @user["structures"].keys %>
+<% device_key = @user["devices"].keys %>
+<% @user["structures"][structure_key.first].map do |nest, value| %>
 	<p><%=  value  %><p>
 <% end %>
-
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<%= @user.inspect %>
-
-
-
-
-
+<% @user["devices"][device_key.first].map do |nest, value| %>
+	<p><%=  value  %><p>
+<% end %>
+ 

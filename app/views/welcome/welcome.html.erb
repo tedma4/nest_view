@@ -1,7 +1,23 @@
 Not Signed In
 <div>
-	<%= link_to "Nest User Login", "/auth/nest" %>	
+	<%= form_tag users_path do %>
+	  <p>
+	    <%= label_tag :name %><br />
+	    <%= text_field_tag "user[name]", params[:name] %>
+	  </p>
+	  <p>
+	    <%= label_tag :email %><br />
+	    <%= text_field_tag "user[email]", params[:email] %>
+	  </p>
+	  <p>
+	    <%= label_tag :password %><br />
+	    <%= password_field_tag "user[password]" %>
+	  </p>
+	  <button type="submit">Submit</button>
+	<% end %>
 </div>
+
+
 <div>
 	<%= link_to "Admin Login", "/login" %>
 </div>

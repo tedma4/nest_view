@@ -1,6 +1,25 @@
 class UsersController < ApplicationController
 
-	before_action :authenticate
+	before_action :validate, except: [:create]
+
+	def new
+		@user = User.new
+	end
+
+
+	def create
+		@user = User.new(user_params)
+		if @user.valid?
+		reset_session
+			user = @user.build_user_hash
+			user[:password] = user_params[:password]
+			session[:user] = user
+			redirect_to "/auth/nest"
+		else
+			reset_session
+			redirect_to "/"
+		end
+	end
 
 	def index
 		users = User.all 
@@ -14,9 +33,7 @@ class UsersController < ApplicationController
 
 	private
 
-		def authenticate
-			if !current_user
-				redirect_to root_path
-			end
+		def user_params
+			params.require(:user).permit(:name, :email, :password)
 		end
 end

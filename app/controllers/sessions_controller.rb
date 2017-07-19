@@ -8,13 +8,15 @@ class SessionsController < ApplicationController
     @admin = Admin.where(email: admin_params[:email]).first
     return invalid_login_attempt unless @admin
     return invalid_login_attempt unless @admin.authenticate(admin_params[:password])
+    reset_session
     session[:admin_id] = @admin.id.to_s
     redirect_to "/users"
   end
 
   def auth
-    user = User.from_omniauth(request.env["omniauth.auth"])
-    session[:user_id] = user.id
+    user = User.from_omniauth(request.env["omniauth.auth"], session)
+    reset_session
+    session[:user_id] = user.id.to_s
     redirect_to root_path
   end
 

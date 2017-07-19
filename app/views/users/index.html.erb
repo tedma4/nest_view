@@ -11,10 +11,12 @@
 	<div>Wheres</div>
 </div>
 
-<% user = @users.first %>
-<p><%= link_to "to user",user_path(user["user_id"]) %></p>
-<% mystery_key = user["structures"].keys %>
-<% user["structures"][mystery_key.first].map do |nest, value| %>
-	<p><%=  value  %><p>
-<% end  %>
+
+<% @users.each do |user| %>
+	<p><%= link_to "to user",user_path(user["user_id"]) %></p>
+	<% mystery_key = user["structures"].keys %>
+	<% user["structures"][mystery_key.first].map do |nest, value| %>
+		<p><%=  value  %><p>
+	<% end %>
+<% end %>
 
