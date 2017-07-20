@@ -34,6 +34,7 @@ class User
   end
 
   def nest_data
+    begin
     url = "https://developer-api.nest.com/"
     headers = {
       "Content-Type":  "application/json",
@@ -43,6 +44,9 @@ class User
     nest_user = JSON.parse res.body 
     nest_user["user_id"] = self.id.to_s
     nest_user
+  rescue 
+    false
+  end
   end
 
   def authenticate(password)

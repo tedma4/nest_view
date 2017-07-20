@@ -20,7 +20,7 @@ production:
 development:
   NEST_ID: "528a8afd-0a7e-4859-90dd-dbdce1b8813d"
   NEST_SECRET: "Fwuo2pEwwy5rRZXP6PoPalUIC"
-
+  MONGODB_URI: "mongodb://heroku_2w98c21v:l6p5cmumbo3r9fdcr3ccovpt7u@ds025459.mlab.com:25459/heroku_2w98c21v"
 
 
 
